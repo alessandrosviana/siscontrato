@@ -1,0 +1,182 @@
+[
+  {
+    "id": "c-001",
+    "slug": "identificacao-das-partes",
+    "titulo": "Identificação das Partes",
+    "categoria": "identificacao",
+    "texto": "CONTRATANTE: {{nome_contratante}}, inscrito(a) no CPF/CNPJ sob o nº {{cpf_cnpj_contratante}}, residente e domiciliado(a) na {{endereco_contratante}}. CONTRATADO(A): {{nome_arquiteto}}, inscrito(a) no Conselho de Arquitetura e Urbanismo sob o nº {{registro_cau}}, com escritório profissional situado na {{endereco_escritorio}}.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-002",
+    "slug": "objeto-do-contrato",
+    "titulo": "Objeto do Contrato",
+    "categoria": "objeto",
+    "texto": "O presente contrato tem por objeto a prestação de serviços profissionais de Arquitetura e Urbanismo pelo CONTRATADO ao CONTRATANTE, consistindo em {{descricao_objeto}}, para o imóvel localizado em {{endereco_obra}}, conforme detalhamento constante no Anexo I deste instrumento.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-003",
+    "slug": "escopo-dos-servicos",
+    "titulo": "Escopo dos Serviços",
+    "categoria": "objeto",
+    "texto": "Os serviços contratados compreendem as seguintes etapas: {{etapas_servico}}. Não estão incluídos no escopo serviços de execução de obra, supervisão de mão de obra de terceiros ou fornecimento de materiais, salvo expressa previsão em contrário neste instrumento.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-004",
+    "slug": "prazos",
+    "titulo": "Prazos",
+    "categoria": "prazo",
+    "texto": "Os serviços serão executados no prazo de {{prazo_entrega}} dias corridos, contados a partir da assinatura deste contrato e do recebimento de todos os documentos e informações necessários pelo CONTRATADO. O prazo será suspenso nas hipóteses de atraso imputável ao CONTRATANTE ou a casos fortuitos e de força maior.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-005",
+    "slug": "honorarios-e-pagamento",
+    "titulo": "Honorários e Forma de Pagamento",
+    "categoria": "honorarios",
+    "texto": "Os honorários profissionais pelo serviço prestado são de {{valor_honorarios}}, a serem pagos da seguinte forma: {{forma_pagamento}}. O não pagamento na data estabelecida implicará incidência de multa de 2% (dois por cento) sobre o valor em atraso, acrescido de juros moratórios de 1% (um por cento) ao mês.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-006",
+    "slug": "direitos-autorais",
+    "titulo": "Direitos Autorais",
+    "categoria": "direitos-autorais",
+    "texto": "Os projetos, plantas, memoriais e demais documentos técnicos elaborados pelo CONTRATADO são de sua autoria exclusiva, protegidos pela Lei nº 9.610/1998 e pela Lei nº 12.378/2010. O CONTRATANTE poderá utilizar os documentos entregues exclusivamente para {{finalidade_uso}}, sendo vedada qualquer reprodução, cessão ou modificação sem autorização prévia e expressa do CONTRATADO.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-007",
+    "slug": "responsabilidades-das-partes",
+    "titulo": "Responsabilidades das Partes",
+    "categoria": "responsabilidades",
+    "texto": "O CONTRATADO se responsabiliza pela qualidade técnica dos serviços prestados, pela observância das normas vigentes e pelo atendimento às disposições do CAU/BR. O CONTRATANTE se responsabiliza por fornecer ao CONTRATADO, no prazo de {{prazo_documentos}} dias após a assinatura, todos os documentos necessários à execução dos serviços, incluindo {{lista_documentos}}.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-008",
+    "slug": "alteracoes-de-escopo",
+    "titulo": "Alterações de Escopo",
+    "categoria": "escopo",
+    "texto": "Qualquer alteração no escopo dos serviços, seja por solicitação do CONTRATANTE ou por necessidade técnica superveniente, deverá ser formalizada por escrito e poderá implicar revisão dos honorários e/ou dos prazos estabelecidos neste contrato. O CONTRATADO apresentará ao CONTRATANTE orçamento suplementar no prazo de {{prazo_orcamento_aditivo}} dias úteis.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-009",
+    "slug": "rescisao-contratual",
+    "titulo": "Rescisão Contratual",
+    "categoria": "rescisao",
+    "texto": "O presente contrato poderá ser rescindido por qualquer das partes mediante notificação por escrito com antecedência mínima de {{prazo_aviso_rescisao}} dias. Em caso de rescisão, o CONTRATADO fará jus ao recebimento proporcional pelos serviços efetivamente prestados até a data da rescisão, calculados com base nos honorários totais previstos neste instrumento.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-010",
+    "slug": "foro",
+    "titulo": "Foro",
+    "categoria": "juridico",
+    "texto": "As partes elegem o foro da Comarca de {{cidade_foro}}, Estado de {{estado_foro}}, para dirimir quaisquer dúvidas ou litígios decorrentes deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.",
+    "obrigatoria": true,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-011",
+    "slug": "direitos-autorais-ampliados",
+    "titulo": "Direitos Autorais Ampliados",
+    "categoria": "direitos-autorais",
+    "texto": "Adicionalmente ao disposto na cláusula de Direitos Autorais, fica o CONTRATANTE autorizado a utilizar os projetos entregues em {{usos_adicionais}}, mediante pagamento de remuneração adicional de {{valor_direitos_ampliados}}, a ser pago na forma acordada entre as partes.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-012",
+    "slug": "exclusividade-arquiteto",
+    "titulo": "Exclusividade do Arquiteto",
+    "categoria": "responsabilidades",
+    "texto": "Durante a vigência deste contrato, o CONTRATADO se compromete a não prestar serviços a concorrentes diretos do CONTRATANTE no segmento de {{segmento_exclusividade}}, pelo período de {{prazo_exclusividade}} meses contados da assinatura deste instrumento.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-013",
+    "slug": "numero-maximo-revisoes",
+    "titulo": "Número Máximo de Revisões",
+    "categoria": "revisoes",
+    "texto": "Estão incluídas no valor dos honorários até {{numero_revisoes}} rodadas de revisão por etapa do projeto. Revisões adicionais solicitadas pelo CONTRATANTE além deste limite serão cobradas ao valor de {{valor_revisao_adicional}} por revisão, mediante emissão de documento de cobrança suplementar.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-014",
+    "slug": "visitas-extras-cobradas",
+    "titulo": "Visitas Extras Cobradas",
+    "categoria": "honorarios",
+    "texto": "As visitas ao local da obra ou ao escritório do CONTRATANTE estão limitadas a {{numero_visitas_inclusas}} visitas inclusas no valor dos honorários. Visitas adicionais serão cobradas ao valor de {{valor_visita_extra}} por visita, acrescido de eventuais despesas de deslocamento.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-015",
+    "slug": "reajuste-honorarios",
+    "titulo": "Reajuste de Honorários",
+    "categoria": "honorarios",
+    "texto": "Os honorários previstos neste contrato serão reajustados anualmente pelo índice {{indice_reajuste}}, acumulado no período de {{periodo_reajuste}}, a partir da data de assinatura deste instrumento, aplicando-se o reajuste sobre o saldo remanescente a ser pago.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-016",
+    "slug": "alteracao-escopo-termo-aditivo",
+    "titulo": "Alteração de Escopo via Termo Aditivo",
+    "categoria": "escopo",
+    "texto": "Toda e qualquer alteração de escopo deverá ser formalizada mediante celebração de Termo Aditivo a este contrato, assinado por ambas as partes. O Termo Aditivo deverá especificar {{conteudo_termo_aditivo}}, bem como os impactos nos honorários e nos prazos de entrega.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-017",
+    "slug": "repeticao-servicos",
+    "titulo": "Repetição de Serviços",
+    "categoria": "escopo",
+    "texto": "Caso o CONTRATANTE solicite a repetição de serviços já executados e entregues, em decorrência de mudança de decisão ou de informações prestadas de forma equivocada, o CONTRATADO cobrará honorários adicionais correspondentes a {{percentual_repeticao}}% do valor originalmente atribuído à etapa refeita.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-018",
+    "slug": "suspensao-projeto",
+    "titulo": "Suspensão do Projeto",
+    "categoria": "rescisao",
+    "texto": "O CONTRATANTE poderá solicitar a suspensão dos serviços pelo prazo máximo de {{prazo_suspensao}} dias mediante notificação escrita ao CONTRATADO. Findo este prazo sem retomada, o contrato será considerado rescindido, fazendo jus o CONTRATADO ao recebimento dos serviços prestados até a data da suspensão.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-019",
+    "slug": "multa-cancelamento",
+    "titulo": "Multa por Cancelamento",
+    "categoria": "rescisao",
+    "texto": "Em caso de cancelamento imotivado do contrato pelo CONTRATANTE após o início dos serviços, será devida multa compensatória de {{percentual_multa_cancelamento}}% sobre o valor total dos honorários contratados, sem prejuízo do pagamento pelos serviços já executados.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  },
+  {
+    "id": "c-020",
+    "slug": "autorizacao-uso-imagens",
+    "titulo": "Autorização de Uso de Imagens",
+    "categoria": "direitos-autorais",
+    "texto": "O CONTRATANTE autoriza o CONTRATADO a fotografar, filmar e divulgar imagens do imóvel e do projeto objeto deste contrato em {{meios_divulgacao}}, para fins de divulgação do portfólio profissional, preservando-se o anonimato do CONTRATANTE quando por ele solicitado.",
+    "obrigatoria": false,
+    "versao": "1.0.0"
+  }
+]

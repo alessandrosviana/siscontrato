@@ -1,0 +1,10 @@
+{
+  "name": "siscontrato",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "test": "bun run --cwd backend test && bun run --cwd frontend test",
+    "build": "bun run --cwd backend build && bun run --cwd frontend build"
+  }
+}
