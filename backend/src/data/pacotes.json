@@ -1,0 +1,59 @@
+[
+  {
+    "id": "projeto-arquitetura",
+    "label": "Projeto de Arquitetura",
+    "escopo_padrao": "Elaboração do projeto arquitetônico completo, desde o estudo preliminar até o projeto legal e executivo, conforme normas técnicas vigentes. Inclui levantamento de dados, programa de necessidades e aprovação junto aos órgãos competentes.",
+    "numero_revisoes_sugerido": 2,
+    "entregaveis": [
+      "Plantas baixas",
+      "Cortes",
+      "Fachadas",
+      "Memorial descritivo"
+    ]
+  },
+  {
+    "id": "projeto-arquitetura-interiores",
+    "label": "Projeto de Arquitetura de Interiores",
+    "escopo_padrao": "Desenvolvimento do projeto de interiores com definição de layout, conceito espacial, paleta de materiais e especificações técnicas para ambientes residenciais ou comerciais. Inclui perspectivas ilustrativas para aprovação do cliente.",
+    "numero_revisoes_sugerido": 3,
+    "entregaveis": [
+      "Projeto de layout",
+      "Projeto de iluminação",
+      "Especificação de materiais",
+      "Perspectivas 3D"
+    ]
+  },
+  {
+    "id": "projeto-acompanhamento-obra",
+    "label": "Projeto + Acompanhamento de Obra",
+    "escopo_padrao": "Elaboração do projeto executivo completo e acompanhamento técnico da obra com visitas periódicas, garantindo a fiel execução do projeto e a qualidade dos serviços realizados. Inclui emissão de relatórios técnicos ao longo da obra.",
+    "numero_revisoes_sugerido": 3,
+    "entregaveis": [
+      "Projeto executivo",
+      "Visitas técnicas semanais",
+      "Relatórios de obra"
+    ]
+  },
+  {
+    "id": "reforma",
+    "label": "Reforma",
+    "escopo_padrao": "Levantamento do imóvel existente e elaboração de projeto de reforma com adequações estruturais, funcionais e estéticas, respeitando as normas técnicas e legislação vigente. Inclui especificações técnicas necessárias para execução.",
+    "numero_revisoes_sugerido": 2,
+    "entregaveis": [
+      "Levantamento do existente",
+      "Projeto de reforma",
+      "Especificações técnicas"
+    ]
+  },
+  {
+    "id": "reforma-interiores",
+    "label": "Reforma de Interiores",
+    "escopo_padrao": "Desenvolvimento do projeto de reforma de interiores com redesenho de layout, seleção de acabamentos e detalhamento de elementos de marcenaria, visando modernização e otimização dos ambientes. Inclui especificação completa de materiais e acabamentos.",
+    "numero_revisoes_sugerido": 2,
+    "entregaveis": [
+      "Projeto de layout",
+      "Detalhamento de marcenaria",
+      "Especificação de acabamentos"
+    ]
+  }
+]
