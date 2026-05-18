@@ -7,14 +7,17 @@ interface StepData {
 interface FormState {
   currentStep: number
   steps: Record<string, StepData>
+  isFinalized: boolean
   setCurrentStep: (step: number) => void
   updateStep: (key: string, data: StepData) => void
   resetForm: () => void
+  finalizeForm: () => void
 }
 
 const initialState = {
   currentStep: 0,
   steps: {},
+  isFinalized: false,
 }
 
 export const useFormStore = create<FormState>((set) => ({
@@ -22,4 +25,5 @@ export const useFormStore = create<FormState>((set) => ({
   setCurrentStep: (step) => set({ currentStep: step }),
   updateStep: (key, data) => set((state) => ({ steps: { ...state.steps, [key]: data } })),
   resetForm: () => set(initialState),
+  finalizeForm: () => set({ isFinalized: true }),
 }))

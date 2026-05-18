@@ -4,6 +4,7 @@ import { env } from './lib/env'
 import { healthRouter } from './routes/health'
 import { clausulasRouter } from './routes/clausulas'
 import { contratosRouter } from './routes/contratos'
+import { pdfRouter } from './routes/pdf'
 
 const app = new Hono()
 
@@ -19,6 +20,7 @@ app.use(
 app.route('/', healthRouter)
 app.route('/api', clausulasRouter)
 app.route('/api', contratosRouter)
+app.route('/api', pdfRouter)
 
 Bun.serve({
   port: env.PORT,

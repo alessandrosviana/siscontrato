@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { Hono, type Context } from 'hono'
 import { generateHtml, getPackages, type ContratoPayload } from '../services/contratos-service'
 
-const ContratoPayloadSchema = z.object({
+export const ContratoPayloadSchema = z.object({
   cliente_nome: z.string().min(1),
   cliente_documento: z.string().min(1),
   cliente_endereco: z.string().min(1),

@@ -4,7 +4,7 @@
 
 ## Tarefas
 
-- [ ] 1.0 Setup: puppeteer-core + logo base64 + exportar schema [P]
-- [ ] 2.0 Serviço PDF — pdf-service.ts (depende: 1.0) [M]
-- [ ] 3.0 Rota POST /api/pdf/gerar — pdf.ts (depende: 2.0) [M]
-- [ ] 4.0 Botão de download no frontend — DownloadPdfButton (depende: 3.0) [M]
+- [x] 1.0 Setup: puppeteer-core + logo base64 + exportar schema [P]
+- [x] 2.0 Serviço PDF — pdf-service.ts (depende: 1.0) [M]
+- [x] 3.0 Rota POST /api/pdf/gerar — pdf.ts (depende: 2.0) [M]
+- [x] 4.0 Botão de download no frontend — DownloadPdfButton (depende: 3.0) [M]
