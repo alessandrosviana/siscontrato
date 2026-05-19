@@ -9,13 +9,12 @@ function buildPayload(steps: Record<string, Record<string, unknown>>): ContratoP
   )
 }
 
-export function HomePage() {
+export function ResultPage() {
   const steps = useFormStore((state) => state.steps)
   const payload = buildPayload(steps)
   return (
     <main>
-      <h1>SisContrato CAU/DF</h1>
-      <p>Plataforma de geração de contratos para arquitetos.</p>
+      <h1>Baixar Contrato</h1>
       <section aria-label="Download do contrato">
         <DownloadPdfButton payload={payload} />
       </section>

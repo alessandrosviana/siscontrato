@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { HomePage } from './home'
+import { ResultPage } from './result-page'
 import { useFormStore } from '../store/form-store'
 
 vi.mock('../components/download-pdf-button', () => ({
@@ -15,33 +15,40 @@ beforeEach(() => {
   useFormStore.setState({ isFinalized: false, currentStep: 0, steps: {} })
 })
 
-describe('HomePage', () => {
-  it('renders the page heading', () => {
-    render(<HomePage />)
-    expect(screen.getByRole('heading', { name: /siscontrato cau\/df/i })).toBeInTheDocument()
-  })
-
+describe('ResultPage', () => {
   it('renders the DownloadPdfButton component', () => {
-    render(<HomePage />)
+    render(<ResultPage />)
     expect(screen.getByTestId('download-pdf-button')).toBeInTheDocument()
   })
 
   it('renders download section with accessible label', () => {
-    render(<HomePage />)
+    render(<ResultPage />)
     expect(screen.getByRole('region', { name: /download do contrato/i })).toBeInTheDocument()
   })
 
   it('passes merged form steps as payload to DownloadPdfButton', () => {
     useFormStore.setState({
       steps: {
-        step1: { cliente_nome: 'Maria Silva', cliente_documento: '123.456.789-00' },
-        step2: { arquiteto_nome: 'João Arquiteto' },
+        step1: { cliente_nome: 'Ana Arquiteta', cliente_documento: '987.654.321-00' },
+        step2: { arquiteto_nome: 'Carlos Silva' },
       },
     })
-    render(<HomePage />)
+    render(<ResultPage />)
     const btn = screen.getByTestId('download-pdf-button')
     const payload = JSON.parse(btn.getAttribute('data-payload') ?? '{}')
-    expect(payload.cliente_nome).toBe('Maria Silva')
-    expect(payload.arquiteto_nome).toBe('João Arquiteto')
+    expect(payload.cliente_nome).toBe('Ana Arquiteta')
+    expect(payload.arquiteto_nome).toBe('Carlos Silva')
+  })
+
+  it('renders with empty payload when store has no steps', () => {
+    render(<ResultPage />)
+    const btn = screen.getByTestId('download-pdf-button')
+    const payload = JSON.parse(btn.getAttribute('data-payload') ?? '{}')
+    expect(payload).toEqual({})
+  })
+
+  it('renders the page heading', () => {
+    render(<ResultPage />)
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
   })
 })
