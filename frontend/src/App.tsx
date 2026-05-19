@@ -1,10 +1,29 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import { HomePage } from './pages/home'
+import { LandingPage } from './pages/landing-page'
+import { DisclaimerPage } from './pages/disclaimer-page'
+import { PackageSelectionPage } from './pages/package-selection-page'
+import { ResultPage } from './pages/result-page'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <LandingPage />,
+  },
+  {
+    path: '/aviso',
+    element: <DisclaimerPage />,
+  },
+  {
+    path: '/pacote',
+    element: <PackageSelectionPage />,
+  },
+  {
+    path: '/resultado',
+    element: <ResultPage />,
+  },
+  {
+    path: '/formulario',
+    element: <div>Form under development</div>,
   },
 ])
 

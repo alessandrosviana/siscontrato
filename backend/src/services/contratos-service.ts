@@ -41,6 +41,8 @@ export interface ContratoPayload {
 export interface Pacote {
   id: string
   label: string
+  tipo_servico: string
+  tipologias: string[]
   escopo_padrao: string
   numero_revisoes_sugerido: number
   entregaveis: string[]

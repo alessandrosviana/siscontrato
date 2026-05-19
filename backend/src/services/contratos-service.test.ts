@@ -158,4 +158,20 @@ describe('getPackages', () => {
       expect(Array.isArray(pkg.entregaveis)).toBe(true)
     }
   })
+
+  it('every package has a non-empty tipo_servico string', () => {
+    const packages = getPackages()
+    for (const pkg of packages) {
+      expect(typeof pkg.tipo_servico).toBe('string')
+      expect(pkg.tipo_servico.length).toBeGreaterThan(0)
+    }
+  })
+
+  it('every package has tipologias array with at least one element', () => {
+    const packages = getPackages()
+    for (const pkg of packages) {
+      expect(Array.isArray(pkg.tipologias)).toBe(true)
+      expect(pkg.tipologias.length).toBeGreaterThan(0)
+    }
+  })
 })

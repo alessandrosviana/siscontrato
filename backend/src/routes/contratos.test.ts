@@ -151,4 +151,18 @@ describe('GET /api/contratos/pacotes', () => {
     expect(Array.isArray(body)).toBe(true)
     expect(body).toHaveLength(5)
   })
+
+  it('first package contains tipo_servico field', async () => {
+    const res = await testApp.request('/api/contratos/pacotes')
+    const body = await res.json()
+    expect(body[0]).toHaveProperty('tipo_servico')
+    expect(typeof body[0].tipo_servico).toBe('string')
+  })
+
+  it('first package contains tipologias field', async () => {
+    const res = await testApp.request('/api/contratos/pacotes')
+    const body = await res.json()
+    expect(body[0]).toHaveProperty('tipologias')
+    expect(Array.isArray(body[0].tipologias)).toBe(true)
+  })
 })
