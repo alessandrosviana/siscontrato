@@ -20,6 +20,10 @@ export interface ContratoPayload {
   prazo_orcamento_aditivo: string
   prazo_aviso_rescisao: string
   cidade_foro: string
+  arquiteto_cpf?: string
+  arquiteto_cnpj?: string
+  arquiteto_email?: string
+  arquiteto_telefone?: string
   servicos_adicionais?: string
   clausulas_opcionais?: string[]
   variaveis_opcionais?: Record<string, string>
