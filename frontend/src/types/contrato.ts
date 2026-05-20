@@ -27,4 +27,10 @@ export interface ContratoPayload {
   servicos_adicionais?: string
   clausulas_opcionais?: string[]
   variaveis_opcionais?: Record<string, string>
+
+  cliente_tipo?: string
+  cliente_email?: string
+  cliente_telefone?: string
+  razao_social?: string
+  nome_representante_legal?: string
 }

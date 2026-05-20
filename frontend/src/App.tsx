@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { ArchitectFormPage } from './pages/architect-form-page'
+import { ClientFormPage } from './pages/client-form-page'
 import { DisclaimerPage } from './pages/disclaimer-page'
 import { LandingPage } from './pages/landing-page'
 import { PackageSelectionPage } from './pages/package-selection-page'
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/formulario',
     element: <ArchitectFormPage />,
+  },
+  {
+    path: '/contratante',
+    element: <ClientFormPage />,
   },
 ])
 
