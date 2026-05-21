@@ -54,7 +54,7 @@ export function ProjectFormPage() {
       endereco_projeto: fields.endereco_projeto,
       area_projeto: fields.area_projeto,
     })
-    navigate('/resultado')
+    navigate('/escopo')
   }
   function handleBack() {
     navigate('/contratante')

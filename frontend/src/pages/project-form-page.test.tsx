@@ -111,14 +111,14 @@ describe('ProjectFormPage', () => {
     })
   })
 
-  it('clicking Continuar with valid data navigates to /resultado', async () => {
+  it('clicking Continuar with valid data navigates to /escopo', async () => {
     await renderPage()
     fireEvent.change(screen.getByLabelText(/tipo de contrato/i), { target: { value: 'Empreitada' } })
     fireEvent.change(screen.getByLabelText(/tipo de serviço/i), { target: { value: 'projeto' } })
     fireEvent.change(screen.getByLabelText(/tipologia/i), { target: { value: 'residencial' } })
     fireEvent.change(screen.getByLabelText(/endereço do projeto/i), { target: { value: 'Rua B, 50' } })
     fireEvent.click(screen.getByRole('button', { name: /continuar/i }))
-    expect(mockNavigate).toHaveBeenCalledWith('/resultado')
+    expect(mockNavigate).toHaveBeenCalledWith('/escopo')
   })
 
   it('clicking Voltar navigates to /contratante', async () => {
