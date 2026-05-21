@@ -3,6 +3,7 @@ import { AdditionalServicesPage } from './pages/additional-services-page'
 import { ArchitectFormPage } from './pages/architect-form-page'
 import { ClientFormPage } from './pages/client-form-page'
 import { DisclaimerPage } from './pages/disclaimer-page'
+import { FeesFormPage } from './pages/fees-form-page'
 import { LandingPage } from './pages/landing-page'
 import { PackageSelectionPage } from './pages/package-selection-page'
 import { ProjectFormPage } from './pages/project-form-page'
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: '/servicos-adicionais',
     element: <AdditionalServicesPage />,
+  },
+  {
+    path: '/honorarios',
+    element: <FeesFormPage />,
   },
 ])
 

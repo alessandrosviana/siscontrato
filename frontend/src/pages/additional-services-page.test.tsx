@@ -116,10 +116,10 @@ describe('AdditionalServicesPage', () => {
     )
   })
 
-  it('clicking Continuar navigates to /resultado', async () => {
+  it('clicking Continuar navigates to /honorarios', async () => {
     await renderPage()
     fireEvent.click(screen.getByRole('button', { name: /continuar/i }))
-    expect(mockNavigate).toHaveBeenCalledWith('/resultado')
+    expect(mockNavigate).toHaveBeenCalledWith('/honorarios')
   })
 
   it('clicking Voltar navigates to /escopo', async () => {

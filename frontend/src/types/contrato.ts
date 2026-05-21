@@ -34,4 +34,7 @@ export interface ContratoPayload {
   cliente_telefone?: string
   razao_social?: string
   nome_representante_legal?: string
+  parcelas?: string
+  valor_parcela?: string
+  indice_reajuste?: string
 }

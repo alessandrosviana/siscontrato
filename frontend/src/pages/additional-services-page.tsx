@@ -35,7 +35,7 @@ export function AdditionalServicesPage() {
       selected_services: selectedServices,
       description,
     })
-    navigate('/resultado')
+    navigate('/honorarios')
   }
   function handleBack() {
     navigate('/escopo')
