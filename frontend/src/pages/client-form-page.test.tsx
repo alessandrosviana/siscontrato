@@ -101,7 +101,7 @@ describe('ClientFormPage', () => {
     expect(screen.getByRole('button', { name: /continuar/i })).not.toBeDisabled()
   })
 
-  it('clicking continue with valid PF data calls updateStep and navigates to /resultado', () => {
+  it('clicking continue with valid PF data calls updateStep and navigates to /projeto', () => {
     render(<ClientFormPage />)
     fireEvent.change(screen.getByLabelText(/nome completo/i), { target: { value: 'João Silva' } })
     fireEvent.change(screen.getByLabelText(/cpf/i), { target: { value: '529.982.247-25' } })
@@ -117,7 +117,7 @@ describe('ClientFormPage', () => {
       razao_social: '',
       nome_representante_legal: '',
     })
-    expect(mockNavigate).toHaveBeenCalledWith('/resultado')
+    expect(mockNavigate).toHaveBeenCalledWith('/projeto')
   })
 
   it('clicking Voltar navigates to /formulario', () => {

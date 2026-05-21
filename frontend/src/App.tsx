@@ -4,6 +4,7 @@ import { ClientFormPage } from './pages/client-form-page'
 import { DisclaimerPage } from './pages/disclaimer-page'
 import { LandingPage } from './pages/landing-page'
 import { PackageSelectionPage } from './pages/package-selection-page'
+import { ProjectFormPage } from './pages/project-form-page'
 import { ResultPage } from './pages/result-page'
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/contratante',
     element: <ClientFormPage />,
+  },
+  {
+    path: '/projeto',
+    element: <ProjectFormPage />,
   },
 ])
 

@@ -98,7 +98,7 @@ export function ClientFormPage() {
       razao_social: fields.razao_social,
       nome_representante_legal: fields.nome_representante_legal,
     })
-    navigate('/resultado')
+    navigate('/projeto')
   }
   function handleBack() {
     navigate('/formulario')

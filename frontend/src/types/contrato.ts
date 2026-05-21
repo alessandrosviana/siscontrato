@@ -8,7 +8,8 @@ export interface ContratoPayload {
   tipo_servico: string
   tipo_projeto: string
   endereco_projeto: string
-  area_projeto: string
+  area_projeto?: string
+  tipo_contrato?: string
   escopo_servicos: string
   prazo_total: string
   valor_total: string
