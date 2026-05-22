@@ -34,11 +34,10 @@ describe('generatePdf', () => {
     expect(Buffer.isBuffer(result)).toBe(true)
   })
 
-  it('injects logo HTTP URL into the HTML before setContent', async () => {
+  it('passes html directly to setContent without modification', async () => {
     await generatePdf(sampleHtml)
-    const [injectedHtml] = mockPage.setContent.mock.calls[0] as [string, unknown]
-    expect(injectedHtml).toContain('/api/pdf/logo')
-    expect(injectedHtml).toContain('position:fixed')
+    const [passedHtml] = mockPage.setContent.mock.calls[0] as [string, unknown]
+    expect(passedHtml).toBe(sampleHtml)
   })
 
   it('calls page.setContent with the original html content included', async () => {

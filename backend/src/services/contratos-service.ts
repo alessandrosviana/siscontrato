@@ -16,6 +16,8 @@ export interface ContratoPayload {
   cliente_documento: string
   cliente_endereco: string
   arquiteto_nome: string
+  arquiteto_cpf?: string
+  arquiteto_cnpj?: string
   arquiteto_endereco: string
   registro_cau: string
   tipo_servico: string
@@ -27,13 +29,15 @@ export interface ContratoPayload {
   prazo_total: string
   valor_total: string
   forma_pagamento: string
+  parcelas?: string
+  valor_parcela?: string
   numero_revisoes: string
-  finalidade_uso: string
-  prazo_documentos: string
-  lista_documentos: string
-  prazo_orcamento_aditivo: string
-  prazo_aviso_rescisao: string
-  cidade_foro: string
+  finalidade_uso?: string
+  prazo_documentos?: string
+  lista_documentos?: string
+  prazo_orcamento_aditivo?: string
+  prazo_aviso_rescisao?: string
+  cidade_foro?: string
   servicos_adicionais?: string
   clausulas_opcionais?: string[]
   variaveis_opcionais?: Record<string, string>
@@ -51,12 +55,28 @@ export interface Pacote {
 
 export type VariableMap = Record<string, string>
 
+function buildArquitetoCpfCnpj(payload: ContratoPayload): string {
+  const parts: string[] = []
+  if (payload.arquiteto_cpf) parts.push(payload.arquiteto_cpf)
+  if (payload.arquiteto_cnpj) parts.push(payload.arquiteto_cnpj)
+  return parts.join(' / ')
+}
+
+function buildFormaPagementoText(payload: ContratoPayload): string {
+  if (payload.forma_pagamento === 'a_vista') return 'à vista'
+  if (payload.forma_pagamento === 'parcelado' && payload.parcelas && payload.valor_parcela) {
+    return `parcelado em ${payload.parcelas} parcelas de ${payload.valor_parcela}`
+  }
+  return payload.forma_pagamento
+}
+
 export function buildVariableMap(payload: ContratoPayload): VariableMap {
   const vars: VariableMap = {
     nome_contratante: payload.cliente_nome,
     cpf_cnpj_contratante: payload.cliente_documento,
     endereco_contratante: payload.cliente_endereco,
     nome_arquiteto: payload.arquiteto_nome,
+    cpf_cnpj_arquiteto: buildArquitetoCpfCnpj(payload),
     endereco_escritorio: payload.arquiteto_endereco,
     registro_cau: payload.registro_cau,
     tipo_servico: payload.tipo_servico,
@@ -66,14 +86,14 @@ export function buildVariableMap(payload: ContratoPayload): VariableMap {
     etapas_servico: payload.escopo_servicos,
     prazo_entrega: payload.prazo_total,
     valor_honorarios: payload.valor_total,
-    forma_pagamento: payload.forma_pagamento,
+    forma_pagamento: buildFormaPagementoText(payload),
     numero_revisoes: payload.numero_revisoes,
-    finalidade_uso: payload.finalidade_uso,
-    prazo_documentos: payload.prazo_documentos,
-    lista_documentos: payload.lista_documentos,
-    prazo_orcamento_aditivo: payload.prazo_orcamento_aditivo,
-    prazo_aviso_rescisao: payload.prazo_aviso_rescisao,
-    cidade_foro: payload.cidade_foro,
+    finalidade_uso: payload.finalidade_uso ?? payload.tipo_projeto,
+    prazo_documentos: payload.prazo_documentos ?? '30',
+    lista_documentos: payload.lista_documentos ?? 'documentos necessários para a execução dos serviços',
+    prazo_orcamento_aditivo: payload.prazo_orcamento_aditivo ?? '15',
+    prazo_aviso_rescisao: payload.prazo_aviso_rescisao ?? '30',
+    cidade_foro: payload.cidade_foro ?? 'Brasília',
     estado_foro: 'Distrito Federal',
   }
   if (payload.variaveis_opcionais) {
@@ -83,7 +103,7 @@ export function buildVariableMap(payload: ContratoPayload): VariableMap {
 }
 
 function substituteVariables(text: string, vars: VariableMap): string {
-  return text.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] ?? `{{${key}}}`)
+  return text.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] ?? '[a preencher]')
 }
 
 function renderClause(slug: string, vars: VariableMap): string {
@@ -135,12 +155,7 @@ function resolveOptionalClausesOrdered(slugs: string[], vars: VariableMap): stri
   }
   const allOptional = listClausulas({ obrigatoria: false })
   const ordered = allOptional.filter((c) => slugSet.has(c.slug))
-  const rendered = ordered.map((c) => renderClause(c.slug, vars)).join('\n')
-  const missingVars = rendered.match(/\{\{(\w+)\}\}/g)
-  if (missingVars) {
-    throw new Error(`Variáveis faltantes para cláusulas opcionais: ${missingVars.join(', ')}`)
-  }
-  return rendered
+  return ordered.map((c) => renderClause(c.slug, vars)).join('\n')
 }
 
 export function getPackages(): Pacote[] {

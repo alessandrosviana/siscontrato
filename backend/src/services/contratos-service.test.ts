@@ -82,10 +82,10 @@ describe('generateHtml', () => {
     ).toThrow('Cláusula não encontrada: slug-inexistente')
   })
 
-  it('throws error listing missing variables when optional clause variables are not provided', () => {
-    expect(() =>
-      generateHtml({ ...validPayload, clausulas_opcionais: ['numero-maximo-revisoes'] })
-    ).toThrow('Variáveis faltantes para cláusulas opcionais')
+  it('renders [a preencher] when optional clause variables are missing', () => {
+    const html = generateHtml({ ...validPayload, clausulas_opcionais: ['numero-maximo-revisoes'] })
+    expect(html).toContain('[a preencher]')
+    expect(html).toContain('Número Máximo de Revisões')
   })
 
   it('generates HTML with no placeholders when all optional clause variables are provided', () => {
@@ -138,6 +138,50 @@ describe('buildVariableMap', () => {
       variaveis_opcionais: { valor_revisao_adicional: 'R$ 800,00' },
     })
     expect(map['valor_revisao_adicional']).toBe('R$ 800,00')
+  })
+
+  it('cpf_cnpj_arquiteto usa cpf quando somente cpf preenchido', () => {
+    const map = buildVariableMap({ ...validPayload, arquiteto_cpf: '123.456.789-00' })
+    expect(map['cpf_cnpj_arquiteto']).toBe('123.456.789-00')
+  })
+
+  it('cpf_cnpj_arquiteto usa cnpj quando somente cnpj preenchido', () => {
+    const map = buildVariableMap({ ...validPayload, arquiteto_cnpj: '12.345.678/0001-99' })
+    expect(map['cpf_cnpj_arquiteto']).toBe('12.345.678/0001-99')
+  })
+
+  it('cpf_cnpj_arquiteto combina ambos quando os dois estão preenchidos', () => {
+    const map = buildVariableMap({
+      ...validPayload,
+      arquiteto_cpf: '123.456.789-00',
+      arquiteto_cnpj: '12.345.678/0001-99',
+    })
+    expect(map['cpf_cnpj_arquiteto']).toBe('123.456.789-00 / 12.345.678/0001-99')
+  })
+
+  it('cpf_cnpj_arquiteto é string vazia quando nenhum documento informado', () => {
+    const map = buildVariableMap(validPayload)
+    expect(map['cpf_cnpj_arquiteto']).toBe('')
+  })
+
+  it('forma_pagamento a_vista renders as "à vista"', () => {
+    const map = buildVariableMap({ ...validPayload, forma_pagamento: 'a_vista' })
+    expect(map['forma_pagamento']).toBe('à vista')
+  })
+
+  it('forma_pagamento parcelado com parcelas e valor_parcela renderiza texto completo', () => {
+    const map = buildVariableMap({
+      ...validPayload,
+      forma_pagamento: 'parcelado',
+      parcelas: '3',
+      valor_parcela: 'R$ 5.000,00',
+    })
+    expect(map['forma_pagamento']).toBe('parcelado em 3 parcelas de R$ 5.000,00')
+  })
+
+  it('forma_pagamento parcelado sem parcelas usa valor bruto como fallback', () => {
+    const map = buildVariableMap({ ...validPayload, forma_pagamento: 'parcelado' })
+    expect(map['forma_pagamento']).toBe('parcelado')
   })
 })
 

@@ -4,7 +4,7 @@
     "slug": "identificacao-das-partes",
     "titulo": "Identificação das Partes",
     "categoria": "identificacao",
-    "texto": "CONTRATANTE: {{nome_contratante}}, inscrito(a) no CPF/CNPJ sob o nº {{cpf_cnpj_contratante}}, residente e domiciliado(a) na {{endereco_contratante}}. CONTRATADO(A): {{nome_arquiteto}}, inscrito(a) no Conselho de Arquitetura e Urbanismo sob o nº {{registro_cau}}, com escritório profissional situado na {{endereco_escritorio}}.",
+    "texto": "CONTRATANTE: {{nome_contratante}}, inscrito(a) no CPF/CNPJ sob o nº {{cpf_cnpj_contratante}}, residente e domiciliado(a) na {{endereco_contratante}}. CONTRATADO(A): {{nome_arquiteto}}, inscrito(a) no Conselho de Arquitetura e Urbanismo sob o nº {{registro_cau}}, CPF/CNPJ nº {{cpf_cnpj_arquiteto}}, com escritório profissional situado na {{endereco_escritorio}}.",
     "obrigatoria": true,
     "versao": "1.0.0"
   },
