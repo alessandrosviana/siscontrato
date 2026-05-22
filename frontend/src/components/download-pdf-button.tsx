@@ -6,9 +6,10 @@ type DownloadState = 'idle' | 'loading' | 'error'
 
 interface Props {
   payload: ContratoPayload
+  onSuccess?: () => void
 }
 
-export function DownloadPdfButton({ payload }: Props) {
+export function DownloadPdfButton({ payload, onSuccess }: Props) {
   const [state, setState] = useState<DownloadState>('idle')
 
   async function handleDownload() {
@@ -26,10 +27,13 @@ export function DownloadPdfButton({ payload }: Props) {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = `contrato-${new Date().toISOString().slice(0, 10)}.pdf`
+      const tipoServico = (payload.tipo_servico ?? 'contrato')
+        .toLowerCase().replace(/\s+/g, '-')
+      a.download = `contrato-${tipoServico}-${new Date().toISOString().slice(0, 10)}.pdf`
       a.click()
       URL.revokeObjectURL(url)
       useFormStore.getState().finalizeForm()
+      onSuccess?.()
       setState('idle')
     } catch (err) {
       console.error('PDF download failed', { error: err instanceof Error ? err.message : 'Unknown error' })

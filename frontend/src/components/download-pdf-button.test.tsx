@@ -100,7 +100,7 @@ describe('DownloadPdfButton', () => {
     resolveFetch({ ok: true, blob: () => Promise.resolve(new Blob(['%PDF'], { type: 'application/pdf' })) })
   })
 
-  it('triggers download with date-based filename on successful fetch', async () => {
+  it('triggers download with tipo_servico and date-based filename on successful fetch', async () => {
     vi.stubGlobal('fetch', makeFetchOk())
 
     const mockObjectUrl = 'blob:mock-url'
@@ -120,9 +120,59 @@ describe('DownloadPdfButton', () => {
 
     await waitFor(() => {
       expect(createObjectURL).toHaveBeenCalled()
-      expect(mockAnchor.download).toMatch(/^contrato-\d{4}-\d{2}-\d{2}\.pdf$/)
+      expect(mockAnchor.download).toMatch(/^contrato-projeto-arquitetura-\d{4}-\d{2}-\d{2}\.pdf$/)
       expect(mockAnchor.click).toHaveBeenCalled()
       expect(revokeObjectURL).toHaveBeenCalledWith(mockObjectUrl)
+    })
+
+    createElementSpy.mockRestore()
+  })
+
+  it('uses tipo_servico from payload in filename with lowercase and hyphens', async () => {
+    vi.stubGlobal('fetch', makeFetchOk())
+    vi.stubGlobal('URL', {
+      createObjectURL: vi.fn().mockReturnValue('blob:mock'),
+      revokeObjectURL: vi.fn(),
+    })
+
+    const payloadWithTipoServico = { ...testPayload, tipo_servico: 'Projeto Residencial' }
+    const mockAnchor = { href: '', download: '', click: vi.fn() }
+    const originalCreateElement = document.createElement.bind(document)
+    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+      if (tag === 'a') return mockAnchor as unknown as HTMLElement
+      return originalCreateElement(tag)
+    })
+
+    render(<DownloadPdfButton payload={payloadWithTipoServico} />)
+    fireEvent.click(screen.getByRole('button'))
+
+    await waitFor(() => {
+      expect(mockAnchor.download).toMatch(/^contrato-projeto-residencial-\d{4}-\d{2}-\d{2}\.pdf$/)
+    })
+
+    createElementSpy.mockRestore()
+  })
+
+  it('uses contrato as fallback filename when tipo_servico is absent', async () => {
+    vi.stubGlobal('fetch', makeFetchOk())
+    vi.stubGlobal('URL', {
+      createObjectURL: vi.fn().mockReturnValue('blob:mock'),
+      revokeObjectURL: vi.fn(),
+    })
+
+    const payloadWithoutTipoServico = { ...testPayload, tipo_servico: undefined } as unknown as ContratoPayload
+    const mockAnchor = { href: '', download: '', click: vi.fn() }
+    const originalCreateElement = document.createElement.bind(document)
+    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+      if (tag === 'a') return mockAnchor as unknown as HTMLElement
+      return originalCreateElement(tag)
+    })
+
+    render(<DownloadPdfButton payload={payloadWithoutTipoServico} />)
+    fireEvent.click(screen.getByRole('button'))
+
+    await waitFor(() => {
+      expect(mockAnchor.download).toMatch(/^contrato-contrato-\d{4}-\d{2}-\d{2}\.pdf$/)
     })
 
     createElementSpy.mockRestore()
@@ -179,6 +229,57 @@ describe('DownloadPdfButton', () => {
 
     await waitFor(() => {
       expect(useFormStore.getState().isFinalized).toBe(true)
+    })
+
+    createElementSpy.mockRestore()
+  })
+
+  it('does not require onSuccess prop — successful download works without it', async () => {
+    vi.stubGlobal('fetch', makeFetchOk())
+    vi.stubGlobal('URL', {
+      createObjectURL: vi.fn().mockReturnValue('blob:mock'),
+      revokeObjectURL: vi.fn(),
+    })
+
+    const mockAnchor = { href: '', download: '', click: vi.fn() }
+    const originalCreateElement = document.createElement.bind(document)
+    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+      if (tag === 'a') return mockAnchor as unknown as HTMLElement
+      return originalCreateElement(tag)
+    })
+
+    render(<DownloadPdfButton payload={testPayload} />)
+    fireEvent.click(screen.getByRole('button'))
+
+    await waitFor(() => {
+      expect(mockAnchor.click).toHaveBeenCalled()
+      expect(useFormStore.getState().isFinalized).toBe(true)
+    })
+
+    createElementSpy.mockRestore()
+  })
+
+  it('calls onSuccess once after finalizeForm on successful download', async () => {
+    vi.stubGlobal('fetch', makeFetchOk())
+    vi.stubGlobal('URL', {
+      createObjectURL: vi.fn().mockReturnValue('blob:mock'),
+      revokeObjectURL: vi.fn(),
+    })
+
+    const mockAnchor = { href: '', download: '', click: vi.fn() }
+    const originalCreateElement = document.createElement.bind(document)
+    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+      if (tag === 'a') return mockAnchor as unknown as HTMLElement
+      return originalCreateElement(tag)
+    })
+
+    const onSuccess = vi.fn()
+    render(<DownloadPdfButton payload={testPayload} onSuccess={onSuccess} />)
+    fireEvent.click(screen.getByRole('button'))
+
+    await waitFor(() => {
+      expect(useFormStore.getState().isFinalized).toBe(true)
+      expect(onSuccess).toHaveBeenCalledTimes(1)
     })
 
     createElementSpy.mockRestore()
