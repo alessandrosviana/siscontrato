@@ -90,7 +90,7 @@ export function FeesFormPage() {
       stepData.indice_reajuste = fields.indice_reajuste
     }
     updateStep('fees', stepData)
-    navigate('/resultado')
+    navigate('/clausulas')
   }
   function handleBack() {
     navigate('/servicos-adicionais')

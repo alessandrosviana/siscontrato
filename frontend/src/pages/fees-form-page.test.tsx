@@ -120,11 +120,11 @@ describe('FeesFormPage', () => {
     }))
   })
 
-  it('submit calls navigate to /resultado', async () => {
+  it('submit calls navigate to /clausulas', async () => {
     await renderPage()
     fillRequiredAVista()
     fireEvent.click(screen.getByRole('button', { name: /continuar/i }))
-    expect(mockNavigate).toHaveBeenCalledWith('/resultado')
+    expect(mockNavigate).toHaveBeenCalledWith('/clausulas')
   })
 
   it('Voltar calls navigate to /servicos-adicionais', async () => {
