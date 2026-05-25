@@ -1,0 +1,162 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.successBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: #dcfce7;
+  border: 1px solid #16a34a;
+  border-radius: 8px;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #15803d;
+  margin: 0;
+}
+
+.storageWarning {
+  font-size: 0.875rem;
+  color: #166534;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.govBrButton {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #1a1a2e;
+  border-radius: 4px;
+  background: none;
+  color: #1a1a2e;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.15s;
+}
+
+.govBrButton:hover {
+  background-color: #f1f5f9;
+}
+
+.govBrButton:focus-visible {
+  outline: 2px solid #1a1a2e;
+  outline-offset: 2px;
+}
+
+.newContractButton {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  background: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.15s;
+}
+
+.newContractButton:hover {
+  background-color: #f8fafc;
+}
+
+.newContractButton:focus-visible {
+  outline: 2px solid #1a1a2e;
+  outline-offset: 2px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modalContent {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modalTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.modalList {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modalList li {
+  font-size: 0.9375rem;
+  color: #1a1a2e;
+}
+
+.modalLink {
+  display: inline-block;
+  color: #1558b0;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  padding: 0.25rem 0;
+}
+
+.modalLink:focus-visible {
+  outline: 2px solid #1a1a2e;
+  outline-offset: 2px;
+}
+
+.modalCloseButton {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.modalCloseButton:hover {
+  background-color: #f8fafc;
+}
+
+.modalCloseButton:focus-visible {
+  outline: 2px solid #1a1a2e;
+  outline-offset: 2px;
+}

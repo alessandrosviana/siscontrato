@@ -1,0 +1,131 @@
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.sectionLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.packageCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.packageCard:hover {
+  border-color: #1a1a2e;
+}
+
+.packageCard[aria-pressed='true'] {
+  border-color: #1a1a2e;
+  background-color: #eef0f8;
+}
+
+.packageName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.packageType {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.typologiesSection {
+  margin-bottom: 2rem;
+}
+
+.typologiesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.typologyButton {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  text-transform: capitalize;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.typologyButton:hover {
+  border-color: #1a1a2e;
+}
+
+.typologyButton[aria-pressed='true'] {
+  border-color: #1a1a2e;
+  background-color: #1a1a2e;
+  color: #fff;
+}
+
+.continueButton {
+  padding: 0.875rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.continueButton:hover:not(:disabled) {
+  background-color: #16213e;
+}
+
+.continueButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.loadingText {
+  font-size: 1rem;
+  color: #555;
+  padding: 2rem 0;
+}
+
+.errorText {
+  font-size: 1rem;
+  color: #c0392b;
+  padding: 2rem 0;
+}

@@ -6,7 +6,8 @@
       "Read(//c/Users/Alessandro/**)",
       "Bash(\"/c/Users/Alessandro/.bun/bin/bun\" test *)",
       "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.bun\\\\bin\" 2>&1)",
-      "PowerShell(Set-Location \"c:\\\\Users\\\\Alessandro\\\\Documents\\\\desenvolvimento\\\\siscontrato\\\\backend\"; & \"$env:USERPROFILE\\\\.bun\\\\bin\\\\bun.exe\" test 2>&1)"
+      "PowerShell(Set-Location \"c:\\\\Users\\\\Alessandro\\\\Documents\\\\desenvolvimento\\\\siscontrato\\\\backend\"; & \"$env:USERPROFILE\\\\.bun\\\\bin\\\\bun.exe\" test 2>&1)",
+      "PowerShell($env:PATH = \"$env:USERPROFILE\\\\.bun\\\\bin;$env:PATH\"; cd \"c:\\\\Users\\\\Alessandro\\\\Documents\\\\desenvolvimento\\\\siscontrato\\\\backend\"; bun run test --run 2>&1)"
     ]
   }
 }
