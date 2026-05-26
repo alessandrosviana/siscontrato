@@ -14,7 +14,10 @@ const FOOTER_TEMPLATE = `
 
 export async function generatePdf(html: string): Promise<Buffer> {
   console.log('PDF generation started')
-  const launchOptions = CHROME_PATH ? { executablePath: CHROME_PATH } : {}
+  const launchOptions = {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    ...(CHROME_PATH ? { executablePath: CHROME_PATH } : {}),
+  }
   const browser = await puppeteer.launch(launchOptions)
   try {
     const page = await browser.newPage()
