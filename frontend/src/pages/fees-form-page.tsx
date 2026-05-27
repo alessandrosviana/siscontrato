@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { NumericFormat } from 'react-number-format'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './fees-form-page.module.css'
 
 interface FeesFields {
@@ -97,9 +98,11 @@ export function FeesFormPage() {
   }
   const isParcelado = fields.forma_pagamento === 'parcelado'
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Honorários e Prazos</h1>
-      <p className={styles.subtitle}>Informe o prazo de execução e os honorários profissionais.</p>
+    <FormShell
+      step={7}
+      title="Honorários e Prazos"
+      subtitle="Informe o prazo de execução e os honorários profissionais."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -133,7 +136,7 @@ export function FeesFormPage() {
               value={fields.prazo_unidade}
               onChange={(e) => handleChange('prazo_unidade', e.target.value as 'dias' | 'meses' | '')}
             >
-              <option value="">Selecione...</option>
+              <option value="">Selecione…</option>
               <option value="dias">dias</option>
               <option value="meses">meses</option>
             </select>
@@ -165,7 +168,7 @@ export function FeesFormPage() {
             value={fields.forma_pagamento}
             onChange={(e) => handleFormaPagamentoChange(e.target.value)}
           >
-            <option value="">Selecione...</option>
+            <option value="">Selecione…</option>
             <option value="a_vista">À vista</option>
             <option value="parcelado">Parcelado</option>
           </select>
@@ -213,7 +216,7 @@ export function FeesFormPage() {
             value={fields.indice_reajuste}
             onChange={(e) => handleChange('indice_reajuste', e.target.value)}
           >
-            <option value="">Selecione...</option>
+            <option value="">Selecione…</option>
             <option value="IPCA">IPCA</option>
             <option value="IGP-M">IGP-M</option>
             <option value="INCC">INCC</option>
@@ -233,6 +236,6 @@ export function FeesFormPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }

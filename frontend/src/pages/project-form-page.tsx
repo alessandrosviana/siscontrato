@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './project-form-page.module.css'
 
 interface ProjectFields {
@@ -60,9 +61,11 @@ export function ProjectFormPage() {
     navigate('/contratante')
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Dados do Projeto</h1>
-      <p className={styles.subtitle}>Preencha os dados do projeto objeto do contrato.</p>
+    <FormShell
+      step={4}
+      title="Dados do Projeto"
+      subtitle="Preencha os dados do projeto objeto do contrato."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -81,7 +84,7 @@ export function ProjectFormPage() {
             value={fields.tipo_contrato}
             onChange={(e) => handleChange('tipo_contrato', e.target.value)}
           >
-            <option value="">Selecione...</option>
+            <option value="">Selecione…</option>
             {TIPO_CONTRATO_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
@@ -91,7 +94,7 @@ export function ProjectFormPage() {
           <label htmlFor="tipo_servico" className={styles.label}>
             Tipo de Serviço
             {suggestedFields.has('tipo_servico') && (
-              <span className={styles.suggestionTag}>(sugestão do pacote)</span>
+              <span className={styles.suggestionTag}>sugestão do pacote</span>
             )}
           </label>
           <select
@@ -100,7 +103,7 @@ export function ProjectFormPage() {
             value={fields.tipo_servico}
             onChange={(e) => handleChange('tipo_servico', e.target.value)}
           >
-            <option value="">Selecione...</option>
+            <option value="">Selecione…</option>
             {TIPO_SERVICO_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
@@ -110,7 +113,7 @@ export function ProjectFormPage() {
           <label htmlFor="tipo_projeto" className={styles.label}>
             Tipologia
             {suggestedFields.has('tipo_projeto') && (
-              <span className={styles.suggestionTag}>(sugestão do pacote)</span>
+              <span className={styles.suggestionTag}>sugestão do pacote</span>
             )}
           </label>
           <select
@@ -119,7 +122,7 @@ export function ProjectFormPage() {
             value={fields.tipo_projeto}
             onChange={(e) => handleChange('tipo_projeto', e.target.value)}
           >
-            <option value="">Selecione...</option>
+            <option value="">Selecione…</option>
             {TIPOLOGIA_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
@@ -166,6 +169,6 @@ export function ProjectFormPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }

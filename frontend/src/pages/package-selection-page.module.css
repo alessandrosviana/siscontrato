@@ -1,131 +1,157 @@
-.container {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: sans-serif;
-}
-
-.title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
+/* ============================================================
+   Package Selection Page — Step 1
+   ============================================================ */
 
 .sectionLabel {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  margin-bottom: var(--sp-3);
 }
 
 .packagesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-8);
 }
 
 .packageCard {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.25rem;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  background-color: #fff;
+  gap: var(--sp-1);
+  padding: var(--sp-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+  box-shadow: var(--shadow-xs);
 }
 
 .packageCard:hover {
-  border-color: #1a1a2e;
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
 }
 
 .packageCard[aria-pressed='true'] {
-  border-color: #1a1a2e;
-  background-color: #eef0f8;
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-subtle);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+}
+
+.packageCard:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .packageName {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--color-ink);
+  line-height: 1.3;
 }
 
 .packageType {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.8125rem;
+  color: var(--color-ink-3);
 }
 
+/* --- Typologies section ----------------------------------- */
+
 .typologiesSection {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-8);
 }
 
 .typologiesGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: var(--sp-2);
 }
 
 .typologyButton {
-  padding: 0.5rem 1.25rem;
-  border: 2px solid #ccc;
-  border-radius: 20px;
-  background-color: #fff;
+  padding: 0.4375rem var(--sp-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #333;
+  font-size: 0.875rem;
+  font-family: var(--font);
+  color: var(--color-ink-2);
   text-transform: capitalize;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .typologyButton:hover {
-  border-color: #1a1a2e;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .typologyButton[aria-pressed='true'] {
-  border-color: #1a1a2e;
-  background-color: #1a1a2e;
-  color: #fff;
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
 }
 
+.typologyButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --- Continue button -------------------------------------- */
+
 .continueButton {
-  padding: 0.875rem 2.5rem;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6875rem var(--sp-8);
+  font-size: 0.9375rem;
   font-weight: 600;
-  background-color: #1a1a2e;
-  color: #fff;
+  font-family: var(--font);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .continueButton:hover:not(:disabled) {
-  background-color: #16213e;
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 2px 8px rgba(43, 57, 200, 0.22);
 }
 
 .continueButton:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
+.continueButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --- States ---------------------------------------------- */
+
 .loadingText {
-  font-size: 1rem;
-  color: #555;
-  padding: 2rem 0;
+  font-size: 0.9375rem;
+  color: var(--color-ink-3);
+  padding: var(--sp-8) 0;
 }
 
 .errorText {
-  font-size: 1rem;
-  color: #c0392b;
-  padding: 2rem 0;
+  font-size: 0.9375rem;
+  color: var(--color-danger);
+  padding: var(--sp-8) 0;
 }
