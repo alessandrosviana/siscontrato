@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFormStore } from '../store/form-store'
 import type { ContratoPayload } from '../types/contrato'
+import styles from './download-pdf-button.module.css'
 
 type DownloadState = 'idle' | 'loading' | 'error'
 
@@ -41,23 +42,35 @@ export function DownloadPdfButton({ payload, onSuccess }: Props) {
     }
   }
 
+  const buttonClass =
+    state === 'loading' ? styles.buttonLoading
+    : state === 'error' ? styles.buttonError
+    : styles.button
+
+  const label =
+    state === 'idle' ? 'Baixar PDF'
+    : state === 'loading' ? 'Gerando PDF…'
+    : 'Erro — tentar novamente'
+
   return (
-    <div>
-      <div aria-live="polite" aria-atomic="true">
-        {state === 'loading' && <span className="sr-only">Gerando PDF, aguarde...</span>}
+    <div className={styles.wrapper}>
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {state === 'loading' && 'Gerando PDF, aguarde...'}
       </div>
       <button
+        className={buttonClass}
         onClick={handleDownload}
         disabled={state === 'loading'}
         aria-label="Baixar contrato em PDF"
         aria-busy={state === 'loading'}
       >
-        {state === 'idle' && 'Baixar PDF'}
-        {state === 'loading' && 'Gerando PDF...'}
-        {state === 'error' && 'Erro ao gerar PDF — tente novamente'}
+        {state === 'loading' && <span className={styles.spinner} aria-hidden="true" />}
+        {label}
       </button>
       {state === 'error' && (
-        <p role="alert">Erro ao gerar PDF — tente novamente</p>
+        <p className={styles.errorMessage} role="alert">
+          Falha ao gerar o PDF. Verifique sua conexão e tente novamente.
+        </p>
       )}
     </div>
   )
