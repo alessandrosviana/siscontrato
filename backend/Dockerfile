@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 COPY bun.lock ./
 COPY backend/package.json ./
-RUN npm install -g bun && bun install --frozen-lockfile
+RUN npm install -g bun && bun install
 COPY backend/ .
 
 ENV CHROME_PATH=/usr/bin/chromium

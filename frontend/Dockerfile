@@ -3,7 +3,7 @@ WORKDIR /app
 RUN npm install -g bun
 COPY bun.lock ./
 COPY frontend/package.json ./
-RUN bun install --frozen-lockfile
+RUN bun install
 COPY frontend/ .
 RUN bun run build
 
