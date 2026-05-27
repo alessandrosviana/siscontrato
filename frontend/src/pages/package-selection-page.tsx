@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './package-selection-page.module.css'
 
 interface Pacote {
@@ -59,24 +60,24 @@ export function PackageSelectionPage() {
   const selectedPackage = packages.find((p) => p.id === selectedPackageId) ?? null
   if (loading) {
     return (
-      <main className={styles.container}>
-        <h1 className={styles.title}>Seleção de Pacote</h1>
-        <p className={styles.loadingText}>Carregando pacotes...</p>
-      </main>
+      <FormShell step={1} title="Seleção de Pacote">
+        <p className={styles.loadingText}>Carregando pacotes…</p>
+      </FormShell>
     )
   }
   if (error) {
     return (
-      <main className={styles.container}>
-        <h1 className={styles.title}>Seleção de Pacote</h1>
+      <FormShell step={1} title="Seleção de Pacote">
         <p className={styles.errorText}>{error}</p>
-      </main>
+      </FormShell>
     )
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Seleção de Pacote</h1>
-      <p className={styles.subtitle}>Selecione o pacote de serviço para o seu contrato.</p>
+    <FormShell
+      step={1}
+      title="Seleção de Pacote"
+      subtitle="Escolha o pacote de serviço para o seu contrato."
+    >
       <p className={styles.sectionLabel}>Pacotes disponíveis</p>
       <div className={styles.packagesGrid}>
         {packages.map((pkg) => (
@@ -116,6 +117,6 @@ export function PackageSelectionPage() {
       >
         Continuar
       </button>
-    </main>
+    </FormShell>
   )
 }

@@ -1,0 +1,127 @@
+/* ============================================================
+   Design Tokens — SisContrato CAU/DF
+   Blueprint meets drafting paper: precision + authority.
+   ============================================================ */
+
+:root {
+  /* --- Canvas & Surfaces ----------------------------------- */
+  --color-canvas: #F7F7F5;          /* warm near-white, drafting paper */
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: #EFEFE9;  /* input backgrounds — inset */
+  --color-surface-overlay: #FFFFFF; /* modals, popovers */
+
+  /* --- Ink / Text ----------------------------------------- */
+  --color-ink: #0E0D16;             /* near-black, technical pen */
+  --color-ink-2: #44434E;           /* secondary text */
+  --color-ink-3: #767583;           /* tertiary / metadata */
+  --color-ink-4: #A8A7B4;           /* muted / placeholder */
+
+  /* --- Borders -------------------------------------------- */
+  --color-border: rgba(14, 13, 22, 0.08);
+  --color-border-soft: rgba(14, 13, 22, 0.05);
+  --color-border-strong: rgba(14, 13, 22, 0.18);
+
+  /* --- Accent — Blueprint Indigo -------------------------- */
+  --color-accent: #2B39C8;
+  --color-accent-hover: #2130B3;
+  --color-accent-subtle: rgba(43, 57, 200, 0.08);
+  --color-accent-on: #FFFFFF;
+
+  /* --- Semantic ------------------------------------------- */
+  --color-success: #166534;
+  --color-success-subtle: #F0FDF4;
+  --color-success-border: rgba(22, 101, 52, 0.18);
+
+  --color-danger: #B91C1C;
+  --color-danger-subtle: #FEF2F2;
+  --color-danger-border: rgba(185, 28, 28, 0.18);
+
+  --color-warning-subtle: #FFFBEB;
+  --color-warning-border: rgba(161, 98, 7, 0.20);
+  --color-warning-text: #78350F;
+
+  /* --- Typography ----------------------------------------- */
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* --- Spacing (4-point scale) ----------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* --- Border Radius --------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* --- Shadows -------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(14, 13, 22, 0.05);
+  --shadow-sm: 0 1px 3px rgba(14, 13, 22, 0.07),
+               0 1px 2px rgba(14, 13, 22, 0.04);
+  --shadow-card: 0 1px 4px rgba(14, 13, 22, 0.06),
+                 0 2px 6px rgba(14, 13, 22, 0.04);
+  --shadow-modal: 0 8px 32px rgba(14, 13, 22, 0.14),
+                  0 2px 8px rgba(14, 13, 22, 0.08);
+
+  /* --- Transitions ---------------------------------------- */
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+}
+
+button {
+  font-family: var(--font);
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font);
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}

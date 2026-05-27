@@ -89,7 +89,7 @@ export function ResultPage() {
     if (previewState === 'loading') {
       return (
         <div className={styles.previewLoading} aria-busy="true" role="status">
-          Carregando preview...
+          Carregando preview…
         </div>
       )
     }
@@ -110,20 +110,23 @@ export function ResultPage() {
   }
 
   return (
-    <main className={styles.container}>
-      <div className={styles.header}>
-        <h1>Revisão do Contrato</h1>
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <span className={styles.brand}>CAU/DF</span>
+      </header>
+      <div className={styles.topBar}>
+        <h1 className={styles.pageTitle}>Revisão do Contrato</h1>
         <button
           className={styles.addClauseButton}
           onClick={handleOpenModal}
           disabled={isFinalized}
         >
-          Adicionar cláusula
+          + Adicionar cláusula
         </button>
       </div>
       <div className={styles.body}>
         {previewState === 'success' && (
-          <nav className={styles.sidebar} aria-label="Navegação de edição">
+          <nav className={styles.sidebar} aria-label="Editar seções do contrato">
             <span className={styles.sidebarTitle}>Editar seção</span>
             {EDIT_LINKS.map(({ label, route }) => (
               <button
@@ -160,16 +163,20 @@ export function ResultPage() {
               className={styles.modalTextarea}
               value={newClauseText}
               onChange={(e) => setNewClauseText(e.target.value)}
-              placeholder="Digite a cláusula personalizada..."
+              placeholder="Digite a cláusula personalizada…"
               aria-label="Texto da cláusula personalizada"
             />
             <div className={styles.modalActions}>
-              <button onClick={handleConfirmClause}>Confirmar</button>
-              <button onClick={handleCloseModal}>Cancelar</button>
+              <button className={styles.modalCancelButton} onClick={handleCloseModal}>
+                Cancelar
+              </button>
+              <button className={styles.modalConfirmButton} onClick={handleConfirmClause}>
+                Confirmar
+              </button>
             </div>
           </div>
         </div>
       )}
-    </main>
+    </div>
   )
 }

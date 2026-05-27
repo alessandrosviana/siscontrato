@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
 import { validateCau, validateCnpj, validateCpf, validateEmail, validatePhone } from '../utils/validators'
+import { FormShell } from '../components/form-shell'
 import styles from './architect-form-page.module.css'
 
 interface ArchitectFields {
@@ -146,9 +147,11 @@ export function ArchitectFormPage() {
     }
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Dados do Arquiteto</h1>
-      <p className={styles.subtitle}>Preencha seus dados profissionais para o contrato.</p>
+    <FormShell
+      step={2}
+      title="Dados do Arquiteto"
+      subtitle="Preencha seus dados profissionais para o contrato."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -289,6 +292,6 @@ export function ArchitectFormPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }

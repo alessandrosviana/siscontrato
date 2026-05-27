@@ -1,135 +1,185 @@
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: sans-serif;
-}
-
-.title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
+/* ============================================================
+   Additional Services Page — Step 6
+   ============================================================ */
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--sp-5);
 }
 
 .fieldGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: var(--sp-2);
 }
 
 .label {
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: #333;
+  color: var(--color-ink-2);
+  letter-spacing: 0.01em;
 }
+
+/* --- Checkbox group -------------------------------------- */
 
 .checkboxGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: var(--sp-2);
 }
 
 .checkbox {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-3);
+  padding: 0.75rem var(--sp-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 1rem;
-  color: #333;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink-2);
+  background-color: var(--color-surface);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+  user-select: none;
+}
+
+.checkbox:has(input:checked) {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-subtle);
+  color: var(--color-ink);
+}
+
+.checkbox:hover:not(:has(input:checked)) {
+  border-color: var(--color-border-strong);
 }
 
 .checkbox input[type='checkbox'] {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-accent);
   cursor: pointer;
-  accent-color: #1a1a2e;
+  flex-shrink: 0;
 }
 
 .checkbox input[type='checkbox']:focus-visible {
-  outline: 2px solid #1a1a2e;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
-.textarea {
-  padding: 0.625rem 0.875rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  resize: vertical;
-  font-family: sans-serif;
-  transition: border-color 0.2s ease;
-}
-
-.textarea:focus-visible {
-  border-color: #1a1a2e;
-  outline: 2px solid #1a1a2e;
-  outline-offset: 2px;
-}
+/* --- Alert ----------------------------------------------- */
 
 .alert {
-  padding: 0.75rem 1rem;
-  background-color: #fff8e1;
-  border: 1px solid #f0c040;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  color: #7a5c00;
-  font-weight: 500;
+  padding: var(--sp-4);
+  background-color: var(--color-warning-subtle);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--color-warning-text);
+  line-height: 1.55;
 }
+
+/* --- Textarea -------------------------------------------- */
+
+.textarea {
+  width: 100%;
+  padding: 0.625rem var(--sp-3);
+  font-size: 0.9375rem;
+  font-family: var(--font);
+  background-color: var(--color-surface-sunken);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-ink);
+  outline: none;
+  resize: vertical;
+  min-height: 5rem;
+  line-height: 1.55;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.textarea:hover {
+  border-color: var(--color-border-strong);
+}
+
+.textarea:focus {
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+}
+
+/* --- Actions --------------------------------------------- */
 
 .actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  align-items: center;
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
 }
 
 .backButton {
-  padding: 0.875rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #fff;
-  color: #1a1a2e;
-  border: 2px solid #1a1a2e;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6875rem var(--sp-5);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: var(--font);
+  background-color: transparent;
+  color: var(--color-ink-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .backButton:hover {
-  background-color: #1a1a2e;
-  color: #fff;
+  background-color: var(--color-surface-sunken);
+  color: var(--color-ink);
+}
+
+.backButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .continueButton {
-  padding: 0.875rem 2.5rem;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6875rem var(--sp-8);
+  font-size: 0.9375rem;
   font-weight: 600;
-  background-color: #1a1a2e;
-  color: #fff;
+  font-family: var(--font);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
-.continueButton:hover {
-  background-color: #16213e;
+.continueButton:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 2px 8px rgba(43, 57, 200, 0.22);
 }
 
 .continueButton:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+}
+
+.continueButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

@@ -66,29 +66,33 @@ export function CompletionPage() {
   }
 
   return (
-    <main className={styles.container}>
-      <div className={styles.successBanner}>
-        <h1 className={styles.successTitle}>Seu contrato foi gerado com sucesso!</h1>
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <span className={styles.brand}>CAU/DF</span>
+      </header>
+      <main className={styles.container}>
+        <div className={styles.successMark} aria-hidden="true">✓</div>
+        <h1 className={styles.successTitle}>Contrato gerado com sucesso</h1>
         <p className={styles.storageWarning}>
           Salve o documento. Esta plataforma não armazena contratos gerados.
         </p>
-      </div>
-      <div className={styles.actions}>
-        <DownloadPdfButton payload={buildPayload(steps)} />
-        <button
-          ref={govBrButtonRef}
-          className={styles.govBrButton}
-          onClick={handleOpenModal}
-        >
-          Encaminhar para assinatura via gov.br
-        </button>
-        <button
-          className={styles.newContractButton}
-          onClick={handleNewContract}
-        >
-          Gerar novo contrato
-        </button>
-      </div>
+        <div className={styles.actions}>
+          <DownloadPdfButton payload={buildPayload(steps)} />
+          <button
+            ref={govBrButtonRef}
+            className={styles.govBrButton}
+            onClick={handleOpenModal}
+          >
+            Encaminhar para assinatura via gov.br
+          </button>
+          <button
+            className={styles.newContractButton}
+            onClick={handleNewContract}
+          >
+            Gerar novo contrato
+          </button>
+        </div>
+      </main>
       {showGovBrModal && (
         <div className={styles.modalOverlay}>
           <div
@@ -115,7 +119,7 @@ export function CompletionPage() {
               aria-label="Acessar assinador.iti.br (abre em nova aba)"
               className={styles.modalLink}
             >
-              Acessar assinador.iti.br
+              Acessar assinador.iti.br →
             </a>
             <button className={styles.modalCloseButton} onClick={handleCloseModal}>
               Fechar
@@ -123,6 +127,6 @@ export function CompletionPage() {
           </div>
         </div>
       )}
-    </main>
+    </div>
   )
 }

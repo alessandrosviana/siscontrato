@@ -1,0 +1,160 @@
+/* ============================================================
+   FormShell — shared chrome for all form pages
+   Signature: progress rail with numbered architectural nodes
+   ============================================================ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-canvas);
+}
+
+/* --- Top header bar --------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-8);
+  height: 52px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.appName {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--color-ink-3);
+}
+
+/* --- Step progress rail ----------------------------------- */
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-8);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.rail {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* Each step node */
+.node {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.nodeDone {
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
+  border: none;
+}
+
+.nodeCurrent {
+  background-color: var(--color-surface);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+}
+
+.nodePending {
+  background-color: var(--color-surface);
+  color: var(--color-ink-4);
+  border: 1.5px solid var(--color-border-strong);
+}
+
+/* Connectors between nodes */
+.connector {
+  flex: 1;
+  height: 1px;
+}
+
+.connectorDone {
+  background-color: var(--color-accent);
+}
+
+.connectorPending {
+  background-color: var(--color-border);
+}
+
+/* Label below rail */
+.stepLabel {
+  font-size: 0.75rem;
+  color: var(--color-ink-3);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.stepLabelCurrent {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+/* --- Content area ----------------------------------------- */
+
+.content {
+  flex: 1;
+  padding: var(--sp-10) var(--sp-8) var(--sp-16);
+}
+
+.contentNarrow {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.contentWide {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Page heading ----------------------------------------- */
+
+.heading {
+  margin-bottom: var(--sp-8);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--sp-2);
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--color-ink-3);
+  line-height: 1.55;
+}

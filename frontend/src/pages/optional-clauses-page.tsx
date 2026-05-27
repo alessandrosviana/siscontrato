@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './optional-clauses-page.module.css'
 
 interface Clausula {
@@ -87,15 +88,15 @@ export function OptionalClausesPage() {
     navigate('/honorarios')
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Cláusulas Opcionais</h1>
-      <p className={styles.subtitle}>
-        Selecione as cláusulas que deseja incluir no contrato e adicione cláusulas personalizadas se necessário.
-      </p>
+    <FormShell
+      step={8}
+      title="Cláusulas Opcionais"
+      subtitle="Selecione cláusulas adicionais e adicione texto personalizado se necessário."
+    >
       <div aria-live="polite" aria-atomic="true">
         {fetchState === 'loading' && (
           <p className={styles.alert} role="status">
-            Carregando cláusulas...
+            Carregando cláusulas…
           </p>
         )}
         {fetchState === 'error' && (
@@ -125,7 +126,7 @@ export function OptionalClausesPage() {
                         aria-controls={`texto-${clausula.slug}`}
                         onClick={() => toggleExpanded(clausula.slug)}
                       >
-                        {isExpanded ? 'Ocultar texto' : 'Ver texto'}
+                        {isExpanded ? 'Ocultar' : 'Ver texto'}
                       </button>
                       <button
                         type="button"
@@ -181,21 +182,20 @@ export function OptionalClausesPage() {
               + Adicionar cláusula personalizada
             </button>
           </div>
+          <div className={styles.actions}>
+            <button type="button" className={styles.backButton} onClick={handleBack}>
+              Voltar
+            </button>
+            <button
+              type="button"
+              className={styles.continueButton}
+              onClick={handleSubmit}
+            >
+              Continuar
+            </button>
+          </div>
         </div>
       )}
-      <div className={styles.actions}>
-        <button type="button" className={styles.backButton} onClick={handleBack}>
-          Voltar
-        </button>
-        <button
-          type="button"
-          className={styles.continueButton}
-          onClick={handleSubmit}
-          disabled={fetchState === 'loading'}
-        >
-          Continuar
-        </button>
-      </div>
-    </main>
+    </FormShell>
   )
 }

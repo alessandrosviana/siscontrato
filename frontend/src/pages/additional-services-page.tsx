@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './additional-services-page.module.css'
 
 const ADDITIONAL_SERVICES = ['Gestão de obra', 'Acompanhamento de obra', 'Fiscalização de obra']
@@ -42,9 +43,11 @@ export function AdditionalServicesPage() {
   }
   const hasSelection = selectedServices.length > 0
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Serviços Adicionais</h1>
-      <p className={styles.subtitle}>Selecione os serviços adicionais, se houver.</p>
+    <FormShell
+      step={6}
+      title="Serviços Adicionais"
+      subtitle="Selecione os serviços adicionais, se houver."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -95,6 +98,6 @@ export function AdditionalServicesPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }

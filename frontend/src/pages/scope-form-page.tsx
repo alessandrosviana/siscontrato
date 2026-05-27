@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
+import { FormShell } from '../components/form-shell'
 import styles from './scope-form-page.module.css'
 
 interface ScopeFields {
@@ -47,9 +48,11 @@ export function ScopeFormPage() {
     navigate('/projeto')
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Escopo dos Serviços</h1>
-      <p className={styles.subtitle}>Descreva o escopo dos serviços contratados.</p>
+    <FormShell
+      step={5}
+      title="Escopo dos Serviços"
+      subtitle="Descreva o escopo dos serviços contratados."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -62,7 +65,7 @@ export function ScopeFormPage() {
           <label htmlFor="escopo_servicos" className={styles.label}>
             Escopo dos Serviços
             {suggestedFields.has('escopo_servicos') && (
-              <span className={styles.suggestionTag}>(sugestão do pacote)</span>
+              <span className={styles.suggestionTag}>sugestão do pacote</span>
             )}
           </label>
           <textarea
@@ -78,7 +81,7 @@ export function ScopeFormPage() {
             <label htmlFor="numero_revisoes" className={styles.label}>
               Número de Revisões
               {suggestedFields.has('numero_revisoes') && (
-                <span className={styles.suggestionTag}>(sugestão do pacote)</span>
+                <span className={styles.suggestionTag}>sugestão do pacote</span>
               )}
             </label>
             <input
@@ -104,6 +107,6 @@ export function ScopeFormPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }

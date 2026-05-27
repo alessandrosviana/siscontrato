@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { FormShell } from '../components/form-shell'
 import styles from './disclaimer-page.module.css'
 
 const DISCLAIMER_POINTS = [
@@ -16,31 +17,32 @@ export function DisclaimerPage() {
     navigate('/pacote')
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Aviso Institucional</h1>
-      <ul className={styles.list}>
-        {DISCLAIMER_POINTS.map((point) => (
-          <li key={point} className={styles.listItem}>
-            {point}
-          </li>
-        ))}
-      </ul>
-      <div className={styles.checkboxWrapper}>
-        <input
-          type="checkbox"
-          id="accept-terms"
-          checked={accepted}
-          onChange={(e) => setAccepted(e.target.checked)}
-        />
-        <label htmlFor="accept-terms">Li e concordo com os termos</label>
+    <FormShell title="Aviso Institucional" subtitle="Leia com atenção antes de prosseguir.">
+      <div className={styles.form}>
+        <ul className={styles.list}>
+          {DISCLAIMER_POINTS.map((point) => (
+            <li key={point} className={styles.listItem}>
+              {point}
+            </li>
+          ))}
+        </ul>
+        <div className={styles.checkboxWrapper}>
+          <input
+            type="checkbox"
+            id="accept-terms"
+            checked={accepted}
+            onChange={(e) => setAccepted(e.target.checked)}
+          />
+          <label htmlFor="accept-terms">Li e concordo com os termos acima</label>
+        </div>
+        <button
+          className={styles.button}
+          disabled={!accepted}
+          onClick={handleContinue}
+        >
+          Continuar
+        </button>
       </div>
-      <button
-        className={styles.button}
-        disabled={!accepted}
-        onClick={handleContinue}
-      >
-        Continuar
-      </button>
-    </main>
+    </FormShell>
   )
 }

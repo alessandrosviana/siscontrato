@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFormStore } from '../store/form-store'
 import { validateCnpj, validateCpf, validateEmail, validatePhone } from '../utils/validators'
+import { FormShell } from '../components/form-shell'
 import styles from './client-form-page.module.css'
 
 type ClientTipo = 'PF' | 'PJ'
@@ -104,9 +105,11 @@ export function ClientFormPage() {
     navigate('/formulario')
   }
   return (
-    <main className={styles.container}>
-      <h1 className={styles.title}>Dados do Cliente</h1>
-      <p className={styles.subtitle}>Preencha os dados do cliente contratante.</p>
+    <FormShell
+      step={3}
+      title="Dados do Contratante"
+      subtitle="Preencha os dados do cliente contratante."
+    >
       <form
         className={styles.form}
         onSubmit={(e) => {
@@ -125,7 +128,7 @@ export function ClientFormPage() {
               checked={clientTipo === 'PF'}
               onChange={() => handleTypeChange('PF')}
             />
-            {' '}Pessoa Física
+            Pessoa Física
           </label>
           <label>
             <input
@@ -135,7 +138,7 @@ export function ClientFormPage() {
               checked={clientTipo === 'PJ'}
               onChange={() => handleTypeChange('PJ')}
             />
-            {' '}Pessoa Jurídica
+            Pessoa Jurídica
           </label>
         </fieldset>
         <div className={styles.fieldGroup}>
@@ -241,6 +244,6 @@ export function ClientFormPage() {
           </button>
         </div>
       </form>
-    </main>
+    </FormShell>
   )
 }
